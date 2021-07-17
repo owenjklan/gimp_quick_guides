@@ -39,6 +39,9 @@
 /*  Constants  */
 #define PROCEDURE_NAME   "gimp_quick_all_guides"
 #define PROCEDURE_NAME_2 "gimp_quick_edge_guides"
+#define PROCEDURE_NAME_3 "gimp_quick_halves_guides"
+#define PROCEDURE_NAME_4 "gimp_quick_quarters_guides"
+#define PROCEDURE_NAME_5 "gimp_quick_thirds_guides"
 
 #define DATA_KEY_VALS    "plug_in_quick_guides"
 #define DATA_KEY_UI_VALS "plug_in_quick_guides_ui"
@@ -150,6 +153,50 @@ query (void)
         args, NULL);
 
     gimp_plugin_menu_register (PROCEDURE_NAME_2, "<Image>/Image/Quick Guides/");
+
+    gimp_install_procedure (
+        PROCEDURE_NAME_3,
+        "Quick Guides",
+        "Help",
+        "Owen Klan",
+        "Owen Klan",
+        "2021",
+        N_("Add halves"),
+        "RGB*, GRAY*, INDEXED*",
+        GIMP_PLUGIN,
+        G_N_ELEMENTS (args), 0,
+        args, NULL);
+
+    gimp_plugin_menu_register (PROCEDURE_NAME_3, "<Image>/Image/Quick Guides/");
+
+    gimp_install_procedure (
+        PROCEDURE_NAME_4,
+        "Quick Guides",
+        "Help",
+        "Owen Klan",
+        "Owen Klan",
+        "2021",
+        N_("Add quarters"),
+        "RGB*, GRAY*, INDEXED*",
+        GIMP_PLUGIN,
+        G_N_ELEMENTS (args), 0,
+        args, NULL);
+
+    gimp_plugin_menu_register (PROCEDURE_NAME_4, "<Image>/Image/Quick Guides/");
+    gimp_install_procedure (
+        PROCEDURE_NAME_5,
+        "Quick Guides",
+        "Help",
+        "Owen Klan",
+        "Owen Klan",
+        "2021",
+        N_("Add thirds"),
+        "RGB*, GRAY*, INDEXED*",
+        GIMP_PLUGIN,
+        G_N_ELEMENTS (args), 0,
+        args, NULL);
+
+    gimp_plugin_menu_register (PROCEDURE_NAME_5, "<Image>/Image/Quick Guides/");
 }
 
 #define SET_MAX_LENGTH 20
@@ -162,6 +209,10 @@ typedef struct __GuidesSet {
 GuidesSet thirds = {
     .length = 2,
     .set = {0.33, 0.66}
+};
+GuidesSet halves = {
+    .length = 1,
+    .set = {0.5}
 };
 GuidesSet quarters = {
     .length = 3,
@@ -229,6 +280,18 @@ run (const gchar *name, gint n_params, const GimpParam *param,
     } else if (strcmp (name, PROCEDURE_NAME_2) == 0) {
         if (run_mode != GIMP_RUN_NONINTERACTIVE) {
             add_guideset_to_image(image_ID, &boundaries);
+        }        
+    } else if (strcmp (name, PROCEDURE_NAME_3) == 0) {
+        if (run_mode != GIMP_RUN_NONINTERACTIVE) {
+            add_guideset_to_image(image_ID, &halves);
+        }        
+    } else if (strcmp (name, PROCEDURE_NAME_4) == 0) {
+        if (run_mode != GIMP_RUN_NONINTERACTIVE) {
+            add_guideset_to_image(image_ID, &quarters);
+        }        
+    } else if (strcmp (name, PROCEDURE_NAME_5) == 0) {
+        if (run_mode != GIMP_RUN_NONINTERACTIVE) {
+            add_guideset_to_image(image_ID, &thirds);
         }        
     } else {
         status = GIMP_PDB_CALLING_ERROR;
