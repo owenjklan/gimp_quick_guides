@@ -499,13 +499,13 @@ s,@INSTALL_DATA@,${INSTALL} -m 644,;t t
 s,@CYGPATH_W@,echo,;t t
 s,@PACKAGE@,gimp-plugin-template,;t t
 s,@VERSION@,2.2.0,;t t
-s,@ACLOCAL@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run aclocal-1.7 ,;t t
-s,@AUTOCONF@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run autoconf,;t t
-s,@AUTOMAKE@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run automake-1.7,;t t
-s,@AUTOHEADER@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run autoheader,;t t
-s,@MAKEINFO@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run makeinfo,;t t
-s,@AMTAR@,${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run tar,;t t
-s,@install_sh@,/home/owen/gimp_plugins/quick_guides/install-sh,;t t
+s,@ACLOCAL@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run aclocal-1.7 ,;t t
+s,@AUTOCONF@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run autoconf,;t t
+s,@AUTOMAKE@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run automake-1.7,;t t
+s,@AUTOHEADER@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run autoheader,;t t
+s,@MAKEINFO@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run makeinfo,;t t
+s,@AMTAR@,${SHELL} /home/owen/git/gimp_quick_guides/missing --run tar,;t t
+s,@install_sh@,/home/owen/git/gimp_quick_guides/install-sh,;t t
 s,@STRIP@,,;t t
 s,@ac_ct_STRIP@,,;t t
 s,@INSTALL_STRIP_PROGRAM@,${SHELL} $(install_sh) -c -s,;t t

@@ -32,7 +32,7 @@ localedir = $(libdir)/locale
 gnulocaledir = $(datadir)/locale
 gettextsrcdir = $(datadir)/glib-2.0/gettext/po
 subdir = po
-install_sh = /home/owen/gimp_plugins/quick_guides/install-sh
+install_sh = /home/owen/git/gimp_quick_guides/install-sh
 mkdir_p = mkdir -p -- .
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 

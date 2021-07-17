@@ -515,6 +515,7 @@ config.status:771: creating help/Makefile
 config.status:771: creating help/en/Makefile
 config.status:771: creating help/images/Makefile
 config.status:837: creating config.h
+config.status:965: config.h is unchanged
 config.status:1145: executing depfiles commands
 config.status:1145: executing intltool commands
 config.status:1145: executing default-1 commands
@@ -583,14 +584,14 @@ gt_cv_have_gettext=yes
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run aclocal-1.7 '
+ACLOCAL='${SHELL} /home/owen/git/gimp_quick_guides/missing --run aclocal-1.7 '
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
-AMTAR='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run tar'
-AUTOCONF='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run autoconf'
-AUTOHEADER='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run autoheader'
-AUTOMAKE='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run automake-1.7'
+AMTAR='${SHELL} /home/owen/git/gimp_quick_guides/missing --run tar'
+AUTOCONF='${SHELL} /home/owen/git/gimp_quick_guides/missing --run autoconf'
+AUTOHEADER='${SHELL} /home/owen/git/gimp_quick_guides/missing --run autoheader'
+AUTOMAKE='${SHELL} /home/owen/git/gimp_quick_guides/missing --run automake-1.7'
 AWK='mawk'
 CATALOGS=' az.gmo de.gmo fr.gmo sk.gmo sv.gmo zh_TW.gmo'
 CATOBJEXT='.gmo'
@@ -651,7 +652,7 @@ LTLIBOBJS=''
 MAINT='#'
 MAINTAINER_MODE_FALSE=''
 MAINTAINER_MODE_TRUE='#'
-MAKEINFO='${SHELL} /home/owen/gimp_plugins/quick_guides/missing --run makeinfo'
+MAKEINFO='${SHELL} /home/owen/git/gimp_quick_guides/missing --run makeinfo'
 MKINSTALLDIRS='./mkinstalldirs'
 MSGFMT='/usr/bin/msgfmt'
 MSGMERGE='/usr/bin/msgmerge'
@@ -688,7 +689,7 @@ exec_prefix='${prefix}'
 host_alias=''
 includedir='${prefix}/include'
 infodir='${prefix}/info'
-install_sh='/home/owen/gimp_plugins/quick_guides/install-sh'
+install_sh='/home/owen/git/gimp_quick_guides/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localstatedir='${prefix}/var'

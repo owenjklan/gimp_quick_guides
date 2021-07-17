@@ -543,7 +543,7 @@ sub Console_WriteError_InvalidOption
 
 sub GenerateHeaders
 {
-    my $EXTRACT = "/home/owen/gimp_plugins/quick_guides/intltool-extract";
+    my $EXTRACT = "/home/owen/git/gimp_quick_guides/intltool-extract";
     chomp $EXTRACT;
 
     $EXTRACT = $ENV{"INTLTOOL_EXTRACT"} if $ENV{"INTLTOOL_EXTRACT"};
