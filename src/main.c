@@ -127,13 +127,13 @@ query (void)
         "Owen Klan",
         "Owen Klan",
         "2021",
-        N_("Quick Guides..."),
+        N_("Add _all"),
         "RGB*, GRAY*, INDEXED*",
         GIMP_PLUGIN,
         G_N_ELEMENTS (args), 0,
         args, NULL);
 
-    gimp_plugin_menu_register (PROCEDURE_NAME, "<Image>/Image/Guides/");
+    gimp_plugin_menu_register (PROCEDURE_NAME, "<Image>/Image/Quick Guides/");
 }
 
 #define SET_MAX_LENGTH 20
