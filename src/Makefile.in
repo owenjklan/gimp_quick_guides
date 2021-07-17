@@ -158,12 +158,8 @@ bin_PROGRAMS = gimp-quick-guides
 
 gimp_plugin_template_SOURCES = \
 	plugin-intl.h	\
-	interface.c	\
-	interface.h	\
 	main.c		\
 	main.h		\
-	render.c	\
-	render.h
 
 
 AM_CPPFLAGS = \

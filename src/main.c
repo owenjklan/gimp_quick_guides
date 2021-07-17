@@ -217,8 +217,6 @@ run (const gchar *name, gint n_params, const GimpParam *param,
     }
 
     if (status == GIMP_PDB_SUCCESS) {
-        render (image_ID, drawable, &vals, &image_vals, &drawable_vals);
-
         if (run_mode != GIMP_RUN_NONINTERACTIVE)
             gimp_displays_flush ();
 
