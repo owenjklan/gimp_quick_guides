@@ -33,8 +33,6 @@
 #include <libgimp/gimpui.h>
 
 #include "main.h"
-#include "interface.h"
-#include "render.h"
 
 #include "plugin-intl.h"
 
