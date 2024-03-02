@@ -3,11 +3,13 @@ Handy GIMP plugin to add useful image guides with a single click.
 
 # Installing
 ## Install required libraries and headers
+**NOTE: These instructions are tested on Ubuntu 22.04. Other systems might differ.**
+
 Assuming that you already have a functional C compiler and development packages
 installed on your system, run the following command to install GIMP development
 packages. This will allow you to compile this C-API-based GIMP plugin.
 ```
-sudo apt-get install libgimp2.0-dev
+sudo apt-get install libgimp2.0-dev intltool
 ```
 
 ## `./configure && make`
