@@ -50,3 +50,34 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# gitignore for autoconf projects, courtesy of:
+# https://stackoverflow.com/questions/16404066/which-files-of-an-autoconf-project-to-put-into-gitignore
+#
+/Makefile
+/Makefile.in
+/aclocal.m4
+/autom4te.cache/
+/config.*
+/configure
+/m4/
+/stamp-h?
+.deps/
+.dirstamp
+*.o
+*~
+
+# ... and for libs
+/depcomp
+/install-sh
+/libtool
+/ltmain.sh
+/missing
+/stamp-h?
+.libs/
+*.l[ao]
+*~
+
+# Pycharm and build
+.idea/
+build/
