@@ -106,3 +106,4 @@ mkinstalldirs
 po/Makefile.in.in
 src/Makefile.in
 
+po/
