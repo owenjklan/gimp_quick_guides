@@ -92,3 +92,9 @@ po/Makefile
 po/Makefile.in
 po/gimp20-plugin-template.pot
 src/Makefile
+
+config.log
+po/gimp20-plugin-template.pot
+src/.deps/main.Po
+
+
