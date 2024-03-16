@@ -42,6 +42,7 @@
 #define PROCEDURE_NAME_3 "gimp_quick_halves_guides"
 #define PROCEDURE_NAME_4 "gimp_quick_quarters_guides"
 #define PROCEDURE_NAME_5 "gimp_quick_thirds_guides"
+#define PROCEDURE_NAME_6 "gimp_clear_all_guides"
 
 #define DATA_KEY_VALS    "plug_in_quick_guides"
 #define DATA_KEY_UI_VALS "plug_in_quick_guides_ui"
@@ -203,41 +204,65 @@ query (void)
 typedef struct __GuidesSet {
     gint32 length;
     gfloat set[SET_MAX_LENGTH];
+    gboolean is_active;
 } GuidesSet;
 
 // Horizontal guides are expressed based on y position
 GuidesSet thirds = {
     .length = 2,
-    .set = {0.33, 0.66}
+    .set = {0.33, 0.66},
+    .is_active = FALSE
 };
 GuidesSet halves = {
     .length = 1,
-    .set = {0.5}
+    .set = {0.5},
+    .is_active = TRUE
 };
 GuidesSet quarters = {
     .length = 3,
-    .set = {0.25, 0.5, 0.75}
+    .set = {0.25, 0.5, 0.75},
+    .is_active = FALSE
 };
 GuidesSet boundaries = {
     .length = 2,
-    .set = {0.00, 1.00}
+    .set = {0.00, 1.00},
+    .is_active = TRUE
 };
 
-static void add_guideset_to_image(gint32 image_ID, GuidesSet *current_set)
+const uint NUM_GUIDE_SETS = 4;
+
+static void add_guideset_to_image(gint32 image_ID, GuidesSet *current_set);
+
+static GuidesSet **get_active_guides(gint32 image_id)
 {
-    gint32 width;
-    gint32 height;
-    gint32 set_cursor;
+// The intention is that after the menu actions that toggle
+// a set of active guide percentages are triggered, we build
+// a fresh list of all percentages from active guide sets
+    GuidesSet *guide_sets[NUM_GUIDE_SETS];
+    guide_sets[0]= &boundaries;
+    guide_sets[1]= &quarters;
+    guide_sets[2]= &halves;
+    guide_sets[3]= &thirds;
+    int index;
+    GuidesSet *guide_set = guide_sets[0];
 
-    width = gimp_image_width(image_ID);
-    height = gimp_image_height(image_ID);
+    for(index = 0,
+        guide_set=guide_sets[index];
+        index < NUM_GUIDE_SETS;
+        index++, guide_set=guide_sets[index]
+    ) {
+        int set_index;
+        if (guide_set->is_active) {
+            char message_buffer[256];
+            int message_index = 0;
+            for (set_index = 0; set_index < guide_set->length; set_index++) {
 
-    for (set_cursor = 0; set_cursor < current_set->length; set_cursor++) {
-        gint32 y_pos = (gfloat)height * current_set->set[set_cursor];
-        gint32 x_pos = (gfloat)width * current_set->set[set_cursor];
-
-        gimp_image_add_hguide(image_ID, y_pos);
-        gimp_image_add_vguide(image_ID, x_pos);
+                int char_count = snprintf(message_buffer + message_index, 256, "Set %d: %.2f\n", set_index, guide_set->set[set_index]);
+                message_index += char_count;
+            }
+            gimp_message(message_buffer);
+            add_guideset_to_image(image_id, guide_set);
+        }
     }
 }
 
@@ -263,7 +288,7 @@ run (const gchar *name, gint n_params, const GimpParam *param,
 
     run_mode = param[0].data.d_int32;
     image_ID = param[1].data.d_int32;
-    drawable = gimp_drawable_get (param[2].data.d_drawable);
+//    drawable = gimp_drawable_get (param[2].data.d_drawable);
 
     /*  Initialize with default values  */
     vals          = default_vals;
@@ -273,9 +298,10 @@ run (const gchar *name, gint n_params, const GimpParam *param,
 
     if (strcmp (name, PROCEDURE_NAME) == 0) {
         if (run_mode != GIMP_RUN_NONINTERACTIVE) {
-            add_guideset_to_image(image_ID, &thirds);
-            add_guideset_to_image(image_ID, &quarters);
-            add_guideset_to_image(image_ID, &boundaries);
+            get_active_guides(image_ID);
+//            add_guideset_to_image(image_ID, &thirds);
+//            add_guideset_to_image(image_ID, &quarters);
+//            add_guideset_to_image(image_ID, &boundaries);
         }
     } else if (strcmp (name, PROCEDURE_NAME_2) == 0) {
         if (run_mode != GIMP_RUN_NONINTERACTIVE) {
@@ -301,9 +327,27 @@ run (const gchar *name, gint n_params, const GimpParam *param,
         if (run_mode != GIMP_RUN_NONINTERACTIVE)
             gimp_displays_flush ();
 
-        gimp_drawable_detach (drawable);
+//        gimp_drawable_detach (drawable);
     }
 
     values[0].type = GIMP_PDB_STATUS;
     values[0].data.d_status = status;
+}
+
+void add_guideset_to_image(gint32 image_ID, GuidesSet *current_set) {
+    gint32 width;
+    gint32 height;
+    gint32 set_cursor;
+
+    width = gimp_image_width(image_ID);
+    height = gimp_image_height(image_ID);
+
+    // Cursor into our set of guide percentages, 'current_set'
+    for (set_cursor = 0; set_cursor < current_set->length; set_cursor++) {
+        gint32 y_pos = (gfloat)height * current_set->set[set_cursor];
+        gint32 x_pos = (gfloat)width * current_set->set[set_cursor];
+
+        gimp_image_add_hguide(image_ID, y_pos);
+        gimp_image_add_vguide(image_ID, x_pos);
+    }
 }
