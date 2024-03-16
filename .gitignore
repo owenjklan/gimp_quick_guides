@@ -97,4 +97,12 @@ config.log
 po/gimp20-plugin-template.pot
 src/.deps/main.Po
 
+INSTALL
+compile
+help/Makefile.in
+help/en/Makefile.in
+help/images/Makefile.in
+mkinstalldirs
+po/Makefile.in.in
+src/Makefile.in
 
