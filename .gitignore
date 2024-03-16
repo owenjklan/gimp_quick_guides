@@ -81,3 +81,14 @@ dkms.conf
 # Pycharm and build
 .idea/
 build/
+
+Makefile
+config.log
+config.status
+help/Makefile
+help/en/Makefile
+help/images/Makefile
+po/Makefile
+po/Makefile.in
+po/gimp20-plugin-template.pot
+src/Makefile
